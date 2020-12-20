@@ -1,64 +1,39 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import StatsDataService from "../services/stats.services.js";
 import { Card, Container, Row } from "react-bootstrap";
 
+const Stats = () => {
+  const [stats, setStats] = useState([]);
 
-class Stats extends Component {
-  constructor(props) {
-    super(props);
-    this.retrieveStats = this.retrieveStats.bind(this);
+  useEffect(() => {
+    retrieveStats();
+  }, []);
 
-    this.state = {
-      stats: [],
-    };
-  }
 
-  componentDidMount() {
-    this.retrieveStats();
-  }
-
-  retrieveStats() {
+  const retrieveStats = () => {
     StatsDataService.getAll()
-      .then((response) => {
-        this.setState({
-          stats: response.data,
-        });
+      .then(response => {
+        setStats(response.data);
         console.log(response.data);
       })
-      .catch((e) => {
+      .catch(e => {
         console.log(e);
       });
-
-  }
-
-  render() {
-    const { stats } = this.state;
-
-    let styles = {
-      margin: '1rem',
-      marginTop: '30px',
-      marginBottom: '30px',
-      textAlign: 'center',
-      flexDirection: 'row',
-      width: '100%',
-      flex: 4
-    };
+  };
 
     return (
       <Container fluid>
         <Row>
           {stats &&
             stats.map((stats) => (
-
-              <Card body style={styles}>
-                <h4 className="card-title" style={{ textTransform: 'uppercase' }}> {stats.title}: <span className="card-text" style={{ fontSize: '18px', color: 'red' }}>{stats.amount}</span></h4>
-              </Card>
-
+              
+                <Card body style={{margin: '1rem',marginTop: '30px', marginBottom: '30px',textAlign: 'center',flexDirection: 'row', width:'100%', flex: 4}} key={stats.id}>
+                  <h4 className="card-title" style={{ textTransform: 'uppercase'}}> {stats.title}: <span className="card-text" style={{ fontSize:'18px', color:'red'}}>{stats.amount}</span></h4>
+                </Card>
+              
             ))}
         </Row>
       </Container>
     );
   }
-}
-
 export default Stats;

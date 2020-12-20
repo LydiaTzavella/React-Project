@@ -17,7 +17,7 @@ const Navigation = (props) => {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">CodeHud.Dashboard</NavbarBrand>
+        <NavbarBrand href="/">CodeHub.Dashboard</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>

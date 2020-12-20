@@ -6,6 +6,7 @@ class TutorialDataService {
   }
 
   get(id) {
+    console.log(id)
     return http.get(`/courses/${id}`);
   }
 

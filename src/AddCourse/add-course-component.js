@@ -33,7 +33,7 @@ export default class AddTutorial extends Component {
   onChangePrice(e) {
     const object = this.state['price'];
     object[e.target.name] = e.target.value;
-    this.setState({ ['price']: object })
+    this.setState(object)
   }
 
   onChangeInstructor(e) {
@@ -46,7 +46,7 @@ export default class AddTutorial extends Component {
       object.splice(this.state.instructors.indexOf(target.name), 1);
     }
 
-    this.setState({ ['instructors']: object })
+    this.setState(object)
   }
 
 
@@ -90,8 +90,8 @@ export default class AddTutorial extends Component {
       title: "",
       imagePath: "",
       price: {
-        normal: 0,
-        early_bird: 0
+        normal: "",
+        early_bird: ""
       },
       start_date: "",
       end_date: "",
@@ -164,11 +164,10 @@ export default class AddTutorial extends Component {
                       </div>
 
                       <div className="form-group">
-                        <label htmlFor="imagePath">Image Path</label>
+                        <label htmlFor="imagePath">Image Path</label><br></br>
                         <input
                           variant="outlined"
                           type="file"
-                          className="form-control"
                           id="img"
                           value={this.state.imagePath}
                           onChange={this.onSimpleChange}
@@ -261,6 +260,7 @@ export default class AddTutorial extends Component {
                           data-variable="price"
                           data-format="change"
                           type="number"
+                          placeholder="0"
                           className="form-control"
                           id="early_bird"
 
@@ -277,6 +277,7 @@ export default class AddTutorial extends Component {
                           data-variable="price"
                           data-format="change"
                           type="number"
+                          placeholder="0"
                           className="form-control"
                           id="normal_price"
                           value={this.state.price.normal}

@@ -1,9 +1,9 @@
 import http from "../http-common";
 
-class StatsDataService {
-    getAll() {
+
+    function getAll() {
         return http.get("/stats");
     }
-}
 
-export default new StatsDataService();
+// eslint-disable-next-line import/no-anonymous-default-export
+export default {getAll};
