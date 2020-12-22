@@ -14,6 +14,7 @@ export default class CourseDetails extends Component {
     this.onChangePrice = this.onChangePrice.bind(this);
     this.onSimpleChange = this.onSimpleChange.bind(this);
     this.onChangeBool = this.onChangeBool.bind(this);
+    this.onChangeDates = this.onChangeDates.bind(this);
     this.onChangeInstructor = this.onChangeInstructor.bind(this);
     this.retrieveInstructors = this.retrieveInstructors.bind(this);
     this.getTutorial = this.getTutorial.bind(this);
@@ -41,9 +42,7 @@ export default class CourseDetails extends Component {
     };
 
     onSimpleChange(e) {
-      this.setState({
-        [e.target.id]: e.target.value
-      });
+      this.setState({ [e.target.id]: e.target.value });
     }
 
     onChangeBool(e) {
@@ -51,23 +50,24 @@ export default class CourseDetails extends Component {
     }
 
     onChangePrice(e) {
-      const object = this.state['price'];
-      object[e.target.name] = e.target.value;
-      this.setState(object)
+      this.setState({ price: { ...this.state.price, [e.target.name]: e.target.value} });
+    }
+
+    onChangeDates(e) {
+      this.setState({ dates: { ...this.state.dates, [e.target.name]: e.target.value} });
     }
 
     onChangeInstructor(e) {
-      const object = this.state['instructors'];
-      const target = e.target;
-      if (target.checked) {
-        object.push(target.name);
+      let index
+      if (e.target.checked) {
+        this.state.instructors.push(e.target.value)
+      } else {
+        index = this.state.instructors.indexOf(e.target.value)
+        this.state.instructors.splice(index, 1)
       }
-      else if (this.state.instructors.indexOf(target.name) !== -1) {
-        object.splice(this.state.instructors.indexOf(target.name), 1);
-      }
-
-      this.setState(object)
+      this.setState({ instructors: this.state.instructors })
     }
+
     
     getTutorial = (id) => {
       TutorialDataService.get(id)
@@ -99,6 +99,8 @@ export default class CourseDetails extends Component {
       const updatePackage = this.state;
       delete updatePackage.message;
       delete updatePackage.instructor;
+      delete updatePackage.isOpen;
+      console.log(updatePackage);
       TutorialDataService.update(
         this.state.id,
         updatePackage
@@ -106,8 +108,9 @@ export default class CourseDetails extends Component {
         .then((response) => {
           console.log(response.data);
           this.setState({
-            message: "The course was updated successfully!",
+            message: "The course was updated successfully!"
           });
+          window.location.reload(false);
         })
         .catch((e) => {
           console.log(e);
@@ -125,16 +128,9 @@ export default class CourseDetails extends Component {
         });
     };
 
-    state = {
-      isOpen: false,
-    };
 
     openModal = () => this.setState({ isOpen: true });
     closeModal = () => this.setState({ isOpen: false });
-
-    state = {
-      Open: false,
-    };
 
     open = () => this.setState({ Open: true });
     close = () => this.setState({ Open: false });
@@ -314,6 +310,7 @@ export default class CourseDetails extends Component {
                     )}
                     <br></br>
                   </div>
+ 
 
                   <hr></hr>
 
@@ -339,11 +336,10 @@ export default class CourseDetails extends Component {
                     <input
                        variant="outlined"
                        type="date"
-                       placeholder="Start date"
                        className="form-control"
                        id="start_date"
                        value={this.state.dates.start_date}
-                       onChange={this.onSimpleChange}
+                       onChange={this.onChangeDates}
                        name="start_date"
                     />
                   </div>
@@ -353,11 +349,10 @@ export default class CourseDetails extends Component {
                     <input
                       variant="outlined"
                       type="date"
-                      placeholder="End date"
                       className="form-control"
                       id="end_date"
                       value={this.state.dates.end_date}
-                      onChange={this.onSimpleChange}
+                      onChange={this.onChangeDates}
                       name="end_date"
                     />
                   </div>

@@ -42,7 +42,6 @@
       "description": "<p>This <strong>innovative Scrum class</strong> won’t be like any other you’ve heard of, with an unconventional focus on the deeply human foundations at work in teams building stuff together.</p><p>This two-day seminar is designed to give aspiring and beginning ScrumMasters and team members the foundations of Scrum and Agile practice. Chock full of exercises, the seminar creates lasting memories and learnings you can carry through into your team so you can avoid common Agile pitfalls. The seminar is designed and taught by <strong>Jim Coplien</strong>, <strong>author of Organizational Patterns and Lean/Agile Process and Architecture Coach</strong>.</p>"
     },
     {
-      "0": "01",
       "id": "02",
       "title": "User eXperience (UX) Research",
       "imagePath": "/ui-ux.png",
@@ -120,11 +119,9 @@
       "instructors": [
         "02"
       ],
-      "description": "The core perspectives of this program will be to present, explore and adequately cover with extended real-life business case studies & industry scenarios",
-      "isOpen": true
+      "description": "The core perspectives of this program will be to present, explore and adequately cover with extended real-life business case studies & industry scenarios"
     },
     {
-      "0": "01",
       "id": "oxUgPRS",
       "title": "Python-AI & ML",
       "imagePath": "\\Python-AI-ML.jpg",
@@ -133,16 +130,16 @@
         "early_bird": "400"
       },
       "dates": {
-        "start_date": "2021-01-08",
-        "end_date": "2021-01-16"
+        "start_date": "2021-01-01",
+        "end_date": "2021-01-15"
       },
       "duration": "2 Fridays and 2 Saturdays",
       "open": true,
       "instructors": [
-        "01"
+        "01",
+        "02"
       ],
-      "description": "The core perspectives of this program will be to present, explore and adequately cover extended real-life business case studies & industry scenarios",
-      "isOpen": true
+      "description": "The core perspectives of this program will be to present, explore and adequately cover extended real-life business case studies & industry scenarios"
     }
   ],
   "instructors": [
