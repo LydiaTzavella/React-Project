@@ -110,7 +110,7 @@
         "start_date": "2020-12-07",
         "end_date": "2021-01-29"
       },
-      "duration": "101 hours in total",
+      "duration": "100 hours in total",
       "open": false,
       "instructors": [
         "02"
@@ -130,7 +130,7 @@
         "end_date": "2021-01-15"
       },
       "duration": "2 Fridays and 2 Saturdays",
-      "open": true,
+      "open": false,
       "instructors": [
         "01",
         "02"

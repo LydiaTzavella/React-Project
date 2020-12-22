@@ -241,6 +241,7 @@ export default class CourseDetails extends Component {
                       type="text"
                       className="form-control"
                       id="title"
+                      required
                       value={this.state.title}
                       onChange={this.onSimpleChange}
                     />
@@ -338,6 +339,7 @@ export default class CourseDetails extends Component {
                        type="date"
                        className="form-control"
                        id="start_date"
+                       required
                        value={this.state.dates.start_date}
                        onChange={this.onChangeDates}
                        name="start_date"
@@ -351,6 +353,7 @@ export default class CourseDetails extends Component {
                       type="date"
                       className="form-control"
                       id="end_date"
+                      required
                       value={this.state.dates.end_date}
                       onChange={this.onChangeDates}
                       name="end_date"
@@ -369,6 +372,7 @@ export default class CourseDetails extends Component {
                       type="number"
                       className="form-control"
                       id="early_bird"
+                      required
                       value={this.state.price.early_bird}
                       onChange={this.onChangePrice}
                       name="early_bird"
@@ -384,6 +388,7 @@ export default class CourseDetails extends Component {
                       type="number"
                       className="form-control"
                       id="normal_price"
+                      required
                       value={this.state.price.normal}
                       onChange={this.onChangePrice}
                       name="normal"

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button, Card, Container, Row } from "react-bootstrap";
 import TutorialDataService from "../services/course.service.js";
 import { Link } from "react-router-dom";
+import Icon from "@material-ui/core/Icon";
 
 
 const Courses = () => {
@@ -44,7 +45,7 @@ const Courses = () => {
                 <Card.Text>
                   <span>
                     Price:{courses.price.normal} | Bookable:{" "}
-                    {` ${courses.open ? "Yes" : "No"}`}
+                    <Icon color="secondary">{(courses.open ? "check" : "close")}</Icon>
                   </span>
                   <br></br>
                   <span>Duration: {courses.duration}</span>
